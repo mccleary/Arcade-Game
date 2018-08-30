@@ -20,7 +20,7 @@ OR
 ## How to Play:
 
 ### Game Rules:
-
+* Goal is to reach a score of 10 to win the game
 
 
 ### Game Operation:
