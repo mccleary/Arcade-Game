@@ -1,16 +1,13 @@
+/***********Engine.js**************
+**********************************/
 /* Engine.js
  * This file provides the game loop functionality (update entities and render),
  * draws the initial game board on the screen, and then calls the update and
  * render methods on your player and enemy objects (defined in your app.js).
  *
- * A game engine works by drawing the entire game screen over and over, kind of
- * like a flipbook you may have created as a kid. When your player moves across
- * the screen, it may look like just that image/character is moving or being
- * drawn but that is not the case. What's really happening is the entire "scene"
- * is being drawn over and over, presenting the illusion of animation.
- *
- * This engine makes the canvas' context (ctx) object globally available to make
- * writing app.js a little simpler to work with.
+ * This engine is available globally via the Engine variable and it also makes
+ * the canvas' context (ctx) object globally available to make writing app.js
+ * a little simpler to work with.
  */
 
 var Engine = (function(global) {
@@ -69,18 +66,13 @@ var Engine = (function(global) {
     }
 
     /* This function is called by main (our game loop) and itself calls all
-     * of the functions which may need to update entity's data. Based on how
-     * you implement your collision detection (when two entities occupy the
-     * same space, for instance when your character should die), you may find
-     * the need to add an additional function call here. For now, we've left
-     * it commented out - you may or may not want to implement this
-     * functionality this way (you could just implement collision detection
-     * on the entities themselves within your app.js file).
+     * of the functions which may need to update entity's data.
      */
     function update(dt) {
         updateEntities(dt);
         // checkCollisions();
     }
+
 
     /* This is called by the update function and loops through all of the
      * objects within your allEnemies array as defined in app.js and calls
@@ -94,6 +86,7 @@ var Engine = (function(global) {
             enemy.update(dt);
         });
         player.update();
+
     }
 
     /* This function initially draws the "game level", it will then call
@@ -107,19 +100,16 @@ var Engine = (function(global) {
          * for that particular row of the game level.
          */
         var rowImages = [
-                'images/water-block.png',   // Top row is water
-                'images/stone-block.png',   // Row 1 of 3 of stone
-                'images/stone-block.png',   // Row 2 of 3 of stone
-                'images/stone-block.png',   // Row 3 of 3 of stone
-                'images/grass-block.png',   // Row 1 of 2 of grass
-                'images/grass-block.png'    // Row 2 of 2 of grass
+                'https://raw.githubusercontent.com/udacity/frontend-nanodegree-arcade-game/master/images/water-block.png',   // Top row is water
+                'https://rawgit.com/udacity/frontend-nanodegree-arcade-game/master/images/stone-block.png',   // Row 1 of 3 of stone
+                'https://rawgit.com/udacity/frontend-nanodegree-arcade-game/master/images/stone-block.png',   // Row 2 of 3 of stone
+                'https://rawgit.com/udacity/frontend-nanodegree-arcade-game/master/images/stone-block.png',   // Row 3 of 3 of stone
+                'https://rawgit.com/udacity/frontend-nanodegree-arcade-game/master/images/grass-block.png',   // Row 1 of 2 of grass
+                'https://rawgit.com/udacity/frontend-nanodegree-arcade-game/master/images/grass-block.png'    // Row 2 of 2 of grass
             ],
             numRows = 6,
             numCols = 5,
             row, col;
-
-        // Before drawing, clear existing canvas
-        ctx.clearRect(0,0,canvas.width,canvas.height)
 
         /* Loop through the number of rows and columns we've defined above
          * and, using the rowImages array, draw the correct image for that
@@ -169,15 +159,12 @@ var Engine = (function(global) {
      * all of these images are properly loaded our game will start.
      */
     Resources.load([
-        'images/stone-block.png',
-        'images/water-block.png',
-        'images/grass-block.png',
-        'images/enemy-bug.png',
-        'images/char-horn-girl.png',
-        'images/char-cat-girl.png',
-        'images/char-pink-girl.png',
-        'images/char-princess-girl.png',
-        'images/char-boy.png'
+        'https://rawgit.com/udacity/frontend-nanodegree-arcade-game/master/images/stone-block.png',
+        'https://raw.githubusercontent.com/udacity/frontend-nanodegree-arcade-game/master/images/water-block.png',
+        'https://rawgit.com/udacity/frontend-nanodegree-arcade-game/master/images/grass-block.png',
+        'https://raw.githubusercontent.com/udacity/frontend-nanodegree-arcade-game/master/images/enemy-bug.png',
+        'https://raw.githubusercontent.com/udacity/frontend-nanodegree-arcade-game/master/images/char-boy.png',
+        'https://raw.githubusercontent.com/udacity/frontend-nanodegree-arcade-game/master/images/Rock.png'
     ]);
     Resources.onReady(init);
 
