@@ -55,10 +55,10 @@ Player.prototype.update = function(dt) {
         this.x = 200;
         this.y = 380;
         score++;
-        document.getElementById('score').innerHTML = score;
+        document.getElementById('levelScore').innerHTML = score;
         if(score >= 10) {
             alert("Great Job! You won!");
-            document.getElementById("score").innerHTML = "0";
+            document.getElementById("levelScore").innerHTML = "0";
         }
     }
 };
